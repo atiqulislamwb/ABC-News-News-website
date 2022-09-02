@@ -1,5 +1,3 @@
-console.log("hwlloe");
-
 const loadCategory = async () => {
   const url = "https://openapi.programming-hero.com/api/news/categories";
   try {
@@ -36,7 +34,6 @@ const loadNews = async (id) => {
 };
 
 const displayNews = async (news) => {
-  console.log(news);
   const mainDiv = document.getElementById("show-news");
   mainDiv.innerHTML = ``;
   news.forEach((newsItem) => {
@@ -48,20 +45,20 @@ const displayNews = async (news) => {
       <div class=" sm:flex shadow-xl m-8 h-auto p-3 bg-white ">
       <div class="">
      <img src=${
-       newsItem.thumbnail_url
+       newsItem?.thumbnail_url
      } class="p-4 w-[320px]  object-contain" alt="something"/>
       </div>
       
       <div class="">
             <p class="text-[18px] font-semibold text-black mt-5">${
-              newsItem.title
+              newsItem?.title
             }</p>
-            <p class="text-[15px]  text-gray-500 mt-5">${newsItem.details.substr(
+            <p class="text-[15px]  text-gray-500 mt-5">${newsItem?.details?.substr(
               0,
               200
             )}</p>
 
-            <p class="text-[15px] text-gray-500 mt-5">${newsItem.details.substr(
+            <p class="text-[15px] text-gray-500 mt-5">${newsItem?.details?.substr(
               330,
               450
             )}...</p>
@@ -98,10 +95,15 @@ const displayNews = async (news) => {
                </div>
                
                <div class="flex">
-               <button type="button" class="text-red-500 text-xl" >
+               <a href="#my-modal-2"   class="text-red-500 text-xl"
+                onclick="loadModalNews('${newsItem?._id}')"
+               >
                <i class="fa-solid fa-arrow-right"></i>
-               </button>
-               
+               </a>
+                
+
+
+
                </div>
            
 
@@ -113,6 +115,21 @@ const displayNews = async (news) => {
       `;
     mainDiv.appendChild(div);
   });
+};
+
+const loadModalNews = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${id}`;
+  try {
+    const response = await fetch(url);
+    const news = await response.json();
+    newsDetails(news?.data[0]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const newsDetails = (news) => {
+  console.log(news);
 };
 
 const toggleSpinner = (isLoading) => {
