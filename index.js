@@ -37,6 +37,56 @@ const loadNews = async (id) => {
 
 const displayNews = async (news) => {
   console.log(news);
+  const mainDiv = document.getElementById("show-news");
+  mainDiv.innerHTML = ``;
+  news.forEach((newsItem) => {
+    const div = document.createElement("div");
+    div.classList.add("w-full");
+    div.innerHTML = `
+      <div class=" sm:flex shadow-xl m-8 h-auto">
+      <div class="">
+     <img src=${
+       newsItem.thumbnail_url
+     } class="p-4 w-[400px] object-cover" alt="something"/>
+      </div>
+      
+      <div class="">
+            <p class="text-[18px] font-semibold text-black mt-5">${
+              newsItem.title
+            }</p>
+            <p class="text-[15px]  text-gray-500 mt-5">${newsItem.details.substr(
+              0,
+              200
+            )}</p>
+
+            <p class="text-[15px] text-gray-500 mt-5">${newsItem.details.substr(
+              330,
+              450
+            )}...</p>
+           <div class="flex mt-4 justity-around">
+
+               <div class="flex">
+               <img class="w-10 rounded-full" src=${newsItem?.author?.img} />
+               <div class="">
+                  <p>${newsItem?.author?.name}</p>
+                  <p>${newsItem?.author?.published_date}</p>
+               </div>
+               </div>
+
+               <div class="flex">
+                   <span class=""></span>
+                   <span class=""></span>
+               </div>
+
+
+             </div>
+
+
+      </div>
+    </div>
+      `;
+    mainDiv.appendChild(div);
+  });
 };
 
 const toggleSpinner = (isLoading) => {
