@@ -15,9 +15,9 @@ const displayCategories = async (categories) => {
   categories.forEach((category) => {
     const div = document.createElement("div");
     div.innerHTML = `
-           <div class="text-black text-gray-500 text-xl p-2 hover:bg-red-100 hover:rounded-md" onclick="loadNews('${category.category_id}')">
+           <button class=" text-black text-gray-500 text-xl p-2 hover:bg-red-100 hover:rounded-md" onclick="loadNews('${category.category_id}')">
              ${category?.category_name}
-           </div>
+           </button>
           `;
     mainDiv.appendChild(div);
   });
@@ -25,6 +25,7 @@ const displayCategories = async (categories) => {
 
 const loadNews = async (id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
+  toggleSpinner(true);
   try {
     const response = await fetch(url);
     const news = await response.json();
@@ -126,6 +127,7 @@ const displayNews = async (news) => {
     </div>
       `;
     mainDiv.appendChild(div);
+    toggleSpinner(false);
   });
 };
 
@@ -141,6 +143,7 @@ const loadModalNews = async (id) => {
 };
 
 const newsDetails = (news) => {
+  toggleSpinner(true);
   const mainDiv = document.getElementById("modal-body");
   mainDiv.innerHTML = `
      <div class="overflow-auto ">
@@ -197,6 +200,7 @@ const newsDetails = (news) => {
    <a href="#" class="btn">Close</a>
  </div>
      `;
+  toggleSpinner(false);
 };
 
 const toggleSpinner = (isLoading) => {
