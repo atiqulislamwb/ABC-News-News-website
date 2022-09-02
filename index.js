@@ -11,15 +11,16 @@ const loadCategory = async () => {
 
 const displayCategories = async (categories) => {
   const mainDiv = document.getElementById("category");
-  for (const category of categories) {
+
+  categories.forEach((category) => {
     const div = document.createElement("div");
     div.innerHTML = `
            <div class="text-black text-gray-500 text-xl p-2 hover:bg-red-100 hover:rounded-md" onclick="loadNews('${category.category_id}')">
-             ${category.category_name}
+             ${category?.category_name}
            </div>
           `;
     mainDiv.appendChild(div);
-  }
+  });
 };
 
 const loadNews = async (id) => {
@@ -36,6 +37,17 @@ const loadNews = async (id) => {
 const displayNews = async (news) => {
   const mainDiv = document.getElementById("show-news");
   mainDiv.innerHTML = ``;
+
+  const noNews = document.getElementById("no-news-found");
+
+  //No found message
+  if (news.length === 0) {
+    noNews.classList.remove("hidden");
+    toggleSpinner(false);
+  } else {
+    noNews.classList.add("hidden");
+  }
+
   news.forEach((newsItem) => {
     const div = document.createElement("div");
 
@@ -62,7 +74,7 @@ const displayNews = async (news) => {
               330,
               450
             )}...</p>
-           <div class="flex mt-4 justify-between p-3">
+           <div class="flex flex-wrap  sm:flex mt-4 justify-between p-3">
 
                <div class="flex">
                <img class="w-10 h-10 object-cover rounded-full" src=${
@@ -129,7 +141,62 @@ const loadModalNews = async (id) => {
 };
 
 const newsDetails = (news) => {
-  console.log(news);
+  const mainDiv = document.getElementById("modal-body");
+  mainDiv.innerHTML = `
+     <div class="overflow-auto ">
+     <img class="w-full " src=${news.image_url} alt="newsimage" />
+     <div>
+     <p class="text-[18px] font-semibold text-black mt-5">${news?.title}</p>
+      <p class="text-[15px]  text-gray-500 mt-5">Description ${
+        news?.details
+      }</p>
+
+    
+     </div>  
+     <div class="flex mt-4 justify-between p-3">
+
+     <div class="flex">
+     <img class="w-10 h-10 object-cover rounded-full" src=${
+       news?.author?.img
+     } />
+     <div class="ml-2 ">
+        <p class="text-black font-semibold ">${
+          news?.author?.name ? news.author?.name : "No Author"
+        }</p>
+        <p class="text-gray-500 font-semibold">${
+          news?.author?.published_date
+        }</p>
+     </div>
+     </div>
+
+     <div class="flex p-2 ">
+         <p class="mr-2"><i class="fa-solid fa-face-grin-wide"></i></p>
+         <p class="font-bold text-black">${
+           news?.total_view ? `${news?.total_view}M` : "No View"
+         } </p>
+     </div>
+
+       <div class="flex  p-2 ">
+         <span class="text-slate-700 mr-2">Rating</span>
+         <span class="font-bold text-black">${news?.rating?.number} </span>
+     </div>
+     
+     
+    
+      
+
+
+
+     </div>
+ 
+
+   </div>
+
+   </div>
+   <div class="modal-action">
+   <a href="#" class="btn">Close</a>
+ </div>
+     `;
 };
 
 const toggleSpinner = (isLoading) => {
