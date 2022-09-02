@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>ABC News</title>
+
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css"
       rel="stylesheet"
@@ -12,9 +20,9 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
+  <body class="bg-gray-100">
     <!-- Navbar -->
-    <div class="navbar bg-base-100 w-3/4 mx-auto m-3">
+    <div class="navbar w-3/4 mx-auto p-4 bg-gray-100">
       <div class="flex-1">
         <a class="btn btn-ghost normal-case text-xl">
           <span class="bg-red-500 p-1 mr-2 text-white rounded-sm px-3"
@@ -30,7 +38,7 @@
           <li class="text-red-500 font-semibold"><a>Blog</a></li>
           <li>
             <a>
-              <div class="w-10 rounded-full">
+              <div class="w-10 h-10 rounded-full">
                 <img src="https://placeimg.com/80/80/people" /></div
             ></a>
           </li>
@@ -73,3 +81,14 @@
     <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
+
+<!-- <div class="flex items-center justify-between">
+    <div class="flex ">
+       <p class="p-2  text-lg text-black font-semibold">Sort By View</p>
+       <p  class="p-2 bg- text-lg text-black font-semibold">Default <span><i class="fa-light fa-arrow-down"></i></span></p>
+    </div>
+    <div>
+      <button class="bg-red-500 text-white text-lg p-2 rounded-md mr-3">Today's Pick</button>
+      <button class="text-red-500 border border-red-500  text-lg p-2 rounded-md mr-3">Trending</button>
+    </div>
+</div> -->

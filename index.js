@@ -41,13 +41,15 @@ const displayNews = async (news) => {
   mainDiv.innerHTML = ``;
   news.forEach((newsItem) => {
     const div = document.createElement("div");
-    div.classList.add("w-full");
+
     div.innerHTML = `
-      <div class=" sm:flex shadow-xl m-8 h-auto">
+
+
+      <div class=" sm:flex shadow-xl m-8 h-auto p-3 bg-white ">
       <div class="">
      <img src=${
        newsItem.thumbnail_url
-     } class="p-4 w-[400px] object-cover" alt="something"/>
+     } class="p-4 w-[320px]  object-contain" alt="something"/>
       </div>
       
       <div class="">
@@ -63,21 +65,45 @@ const displayNews = async (news) => {
               330,
               450
             )}...</p>
-           <div class="flex mt-4 justity-around">
+           <div class="flex mt-4 justify-between p-3">
 
                <div class="flex">
-               <img class="w-10 rounded-full" src=${newsItem?.author?.img} />
-               <div class="">
-                  <p>${newsItem?.author?.name}</p>
-                  <p>${newsItem?.author?.published_date}</p>
+               <img class="w-10 h-10 object-cover rounded-full" src=${
+                 newsItem?.author?.img
+               } />
+               <div class="ml-2 ">
+                  <p class="text-black font-semibold ">${
+                    newsItem?.author?.name ? newsItem.author?.name : "No Author"
+                  }</p>
+                  <p class="text-gray-500 font-semibold">${
+                    newsItem?.author?.published_date
+                  }</p>
                </div>
                </div>
 
+               <div class="flex p-2 ">
+                   <p class="mr-2"><i class="fa-solid fa-face-grin-wide"></i></p>
+                   <p class="font-bold text-black">${
+                     newsItem?.total_view
+                       ? `${newsItem?.total_view}M`
+                       : "No View"
+                   } </p>
+               </div>
+
+                 <div class="flex  p-2 ">
+                   <span class="text-slate-700 mr-2">Rating</span>
+                   <span class="font-bold text-black">${
+                     newsItem?.rating?.number
+                   } </span>
+               </div>
+               
                <div class="flex">
-                   <span class=""></span>
-                   <span class=""></span>
+               <button type="button" class="text-red-500 text-xl" >
+               <i class="fa-solid fa-arrow-right"></i>
+               </button>
+               
                </div>
-
+           
 
              </div>
 
