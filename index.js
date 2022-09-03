@@ -11,6 +11,7 @@ const loadCategory = async () => {
 
 const displayCategories = async (categories) => {
   const mainDiv = document.getElementById("category");
+  const submainDiv = document.getElementById("sub-information");
 
   categories.forEach((category) => {
     const div = document.createElement("div");
@@ -41,17 +42,31 @@ const displayNews = async (news) => {
   console.log(news);
   mainDiv.innerHTML = ``;
   submainDiv.innerHTML = `
-    <p class="font-semibold text-slate-800">${news.length} items found category </p>
-  `;
+    <p class="font-semibold text-slate-800 bg-white p-2 mb-4 sm:mb-10">${news.length} news found category </p>
+    <div class="flex gap-3 flex-wrap items-center justify-center sm:flex sm:items-center sm:justify-between bg-gray-100">
+    <div class="flex ">
+       <p class="p-2  text-lg text-black font-semibold">Sort By View</p>
+       <p  class="p-2 bg- text-lg text-slate-400 font-semibold bg-white rounded-md px-2">Default <span class="ml-4"><i class="fa-solid fa-arrow-down-long"></i></span></p>
+    </div>
+    <div>
+      <button class="bg-red-500 text-white text-lg p-2 rounded-md mr-3">Today's Pick</button>
+      <button class="text-red-500 border border-red-500  text-lg p-2 rounded-md mr-3">Trending</button>
+    </div>
+</div>
+
+  
+    `;
 
   const noNews = document.getElementById("no-news-found");
 
   //No found message
   if (news.length === 0) {
     noNews.classList.remove("hidden");
+    submainDiv.classList.add("hidden");
     toggleSpinner(false);
   } else {
     noNews.classList.add("hidden");
+    submainDiv.classList.remove("hidden");
   }
 
   news.forEach((newsItem) => {
@@ -63,7 +78,7 @@ const displayNews = async (news) => {
       <div class=" sm:flex shadow-xl m-8 h-auto p-3 bg-white ">
       <div class="">
      <img src=${
-       newsItem?.thumbnail_url
+       newsItem?.thumbnail_url ? newsItem?.thumbnail_url : "No News Image"
      } class="p-4 w-[320px]  object-contain" alt="something"/>
       </div>
       
@@ -92,6 +107,8 @@ const displayNews = async (news) => {
                   }</p>
                   <p class="text-gray-500 font-semibold">${
                     newsItem?.author?.published_date
+                      ? newsItem?.author?.published_date
+                      : "No Published Date"
                   }</p>
                </div>
                </div>
