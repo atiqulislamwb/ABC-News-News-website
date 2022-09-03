@@ -37,12 +37,15 @@ const loadNews = async (id) => {
 };
 
 const displayNews = async (news) => {
+  const sortedNews = news.sort((a, b) => b?.total_view - a?.total_view);
+  console.log(sortedNews);
+
   const mainDiv = document.getElementById("show-news");
   const submainDiv = document.getElementById("sub-information");
-  console.log(news);
+
   mainDiv.innerHTML = ``;
   submainDiv.innerHTML = `
-    <p class="font-semibold text-slate-800 bg-white p-2 mb-4 sm:mb-10">${news.length} news found category </p>
+    <p class="font-semibold text-slate-800 bg-white p-2 mb-4 sm:mb-10">${sortedNews.length} news found category </p>
     <div class="flex gap-3 flex-wrap items-center justify-center sm:flex sm:items-center sm:justify-between bg-gray-100">
     <div class="flex ">
        <p class="p-2  text-lg text-black font-semibold">Sort By View</p>
@@ -60,7 +63,7 @@ const displayNews = async (news) => {
   const noNews = document.getElementById("no-news-found");
 
   //No found message
-  if (news.length === 0) {
+  if (sortedNews.length === 0) {
     noNews.classList.remove("hidden");
     submainDiv.classList.add("hidden");
     toggleSpinner(false);
@@ -69,7 +72,7 @@ const displayNews = async (news) => {
     submainDiv.classList.remove("hidden");
   }
 
-  news.forEach((newsItem) => {
+  sortedNews.forEach((newsItem) => {
     const div = document.createElement("div");
 
     div.innerHTML = `
