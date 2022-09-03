@@ -37,7 +37,12 @@ const loadNews = async (id) => {
 
 const displayNews = async (news) => {
   const mainDiv = document.getElementById("show-news");
+  const submainDiv = document.getElementById("sub-information");
+  console.log(news);
   mainDiv.innerHTML = ``;
+  submainDiv.innerHTML = `
+    <p class="font-semibold text-slate-800">${news.length} items found category </p>
+  `;
 
   const noNews = document.getElementById("no-news-found");
 
