@@ -38,14 +38,13 @@ const loadNews = async (id) => {
 
 const displayNews = async (news) => {
   const sortedNews = news.sort((a, b) => b?.total_view - a?.total_view);
-  console.log(sortedNews);
 
   const mainDiv = document.getElementById("show-news");
   const submainDiv = document.getElementById("sub-information");
 
   mainDiv.innerHTML = ``;
   submainDiv.innerHTML = `
-    <p class="font-semibold text-slate-800 bg-white p-2 mb-4 sm:mb-10">${sortedNews.length} news found category ${sortedNews.category_name} </p>
+    <p class="font-semibold text-slate-800 bg-white p-2 mb-4 sm:mb-10">${sortedNews.length} news found  </p>
     <div class="flex gap-3 flex-wrap items-center justify-center sm:flex sm:items-center sm:justify-between bg-gray-100">
     <div class="flex ">
        <p class="p-2  text-lg text-black font-semibold">Sort By View</p>
@@ -82,7 +81,7 @@ const displayNews = async (news) => {
       <div class="">
      <img src=${
        newsItem?.thumbnail_url ? newsItem?.thumbnail_url : "No News Image"
-     } class="p-4 w-[320px]  object-contain" alt="something"/>
+     } class="p-4 xs:w-[320px] xs:h-[400px]  object-contain" alt="something"/>
       </div>
       
       <div class="">
@@ -91,12 +90,12 @@ const displayNews = async (news) => {
             }</p>
             <p class="text-[15px]  text-gray-500 mt-5">${newsItem?.details?.substr(
               0,
-              200
+              190
             )}</p>
 
             <p class="text-[15px] text-gray-500 mt-5">${newsItem?.details?.substr(
               330,
-              450
+              430
             )}...</p>
            <div class="flex flex-wrap  sm:flex mt-4 justify-between p-3">
 
@@ -139,16 +138,9 @@ const displayNews = async (news) => {
                <i class="fa-solid fa-arrow-right"></i>
                </a>
                 
-
-
-
-               </div>
-           
-
-             </div>
-
-
-      </div>
+           </div>
+            </div>
+        </div>
     </div>
       `;
     mainDiv.appendChild(div);
@@ -175,7 +167,7 @@ const newsDetails = (news) => {
      <img class="w-full " src=${news.image_url} alt="newsimage" />
      <div>
      <p class="text-[18px] font-semibold text-black mt-5">${news?.title}</p>
-      <p class="text-[15px]  text-gray-500 mt-5">Description ${
+      <p class="text-[15px]  text-gray-500 mt-5">Description :  ${
         news?.details
       }</p>
 
@@ -185,7 +177,7 @@ const newsDetails = (news) => {
 
      <div class="flex">
      <img class="w-10 h-10 object-cover rounded-full" src=${
-       news?.author?.img
+       news?.author?.img ? news?.author?.img : "No Image"
      } />
      <div class="ml-2 ">
         <p class="text-black font-semibold ">${
