@@ -16,7 +16,7 @@ const displayCategories = async (categories) => {
   categories.forEach((category) => {
     const div = document.createElement("div");
     div.innerHTML = `
-           <button class=" text-black text-gray-500 text-xl p-2 hover:bg-red-100 hover:rounded-md" onclick="loadNews('${category.category_id}')">
+           <button class="text-black text-gray-500 text-xl p-2 hover:bg-red-100 hover:rounded-md" onclick="loadNews('${category.category_id}')">
              ${category?.category_name}
            </button>
           `;
@@ -45,7 +45,7 @@ const displayNews = async (news) => {
 
   mainDiv.innerHTML = ``;
   submainDiv.innerHTML = `
-    <p class="font-semibold text-slate-800 bg-white p-2 mb-4 sm:mb-10">${sortedNews.length} news found category </p>
+    <p class="font-semibold text-slate-800 bg-white p-2 mb-4 sm:mb-10">${sortedNews.length} news found category ${sortedNews.category_name} </p>
     <div class="flex gap-3 flex-wrap items-center justify-center sm:flex sm:items-center sm:justify-between bg-gray-100">
     <div class="flex ">
        <p class="p-2  text-lg text-black font-semibold">Sort By View</p>
