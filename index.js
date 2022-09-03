@@ -50,7 +50,7 @@ const displayNews = async (news) => {
     </div>
     <div>
       <button class="bg-red-500 text-white text-lg p-2 rounded-md mr-3">Today's Pick</button>
-      <button class="text-red-500 border border-red-500  text-lg p-2 rounded-md mr-3">Trending</button>
+      <button class="text-red-500 border border-red-500   text-lg p-2 rounded-md mr-3">Trending</button>
     </div>
 </div>
 
@@ -130,7 +130,7 @@ const displayNews = async (news) => {
                </div>
                
                <div class="flex">
-               <a href="#my-modal-2"   class="text-red-500 text-xl"
+               <a href="#my-modal-2"   class="hover:bg-red-200 text-red-500 text-xl mt-3 p-3 rounded-full sm:mt-2"
                 onclick="loadModalNews('${newsItem?._id}')"
                >
                <i class="fa-solid fa-arrow-right"></i>

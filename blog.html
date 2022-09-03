@@ -15,9 +15,127 @@
   <body class="bg-gray-100">
    
    <section class="w-screen h-screen">
+    <!-- Navbar -->
+    <div class="navbar w-3/4 mx-auto p-4 bg-gray-100">
+      <div class="flex-1">
+        <a  class="btn btn-ghost normal-case text-xl">
+          <span class="bg-red-500 p-1 mr-2 text-white rounded-sm px-3"
+            >ABC</span
+          >
+          <span class="text-red-500">News</span></a
+        >
+      </div>
+      <div class="flex-none">
+        <ul class="menu menu-horizontal p-0">
+          <li class="text-red-500 font-semibold border-b-2 border-red-500"><a href="index.html"  >News</a></li>
+
+          <li class="text-red-500 font-semibold">
+            <a href="blog.html">Blog</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+    <div class="w-5/6 mx-auto bg-gray-300 h-[2px] m-2"></div>
+    <!-- Navbar End -->
+
     <div class="text-center flex flex-col items-center justify-center">
       <p class="text-5xl font-bold mt-10">FAQ</p>
        <div class="m-10">
+         <div class="m-3 text-start">
+          <div class="collapse">
+            <input type="checkbox" class="peer" /> 
+            <div class="collapse-title text-xl rounded-md text-gray-500 bg-white text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+              Q1. Difference among var , let & constant?
+            </div>
+            <div class="text-left collapse-content text-lg font-bold text-gray-800 bg-white text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"> 
+              <p><span class="text-blue-700">var:</span>
+                (1) hoisted (always declared at top of scope, global if none)
+                  (2) function scope
+                  </p>
+                  <p>
+                    <span class="text-blue-700">let:</span>
+                  (1) block scope.
+                  (2) not redeclarable
+                  </p>
+                  <p>
+                    <span class="text-blue-700">const:</span>
+                  (1) block scope
+                  (2) not reassignable
+                  (3) not redeclarable</p>
+            </div>
+          </div>
+         </div>  
+
+
+         <div class="m-3 text-start">
+          <div class="collapse">
+            <input type="checkbox" class="peer" /> 
+            <div class="collapse-title text-xl rounded-md text-gray-500 bg-white text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+              Q2. Difference between arrow & regular function?
+            </div>
+            <div class="text-left collapse-content font-bold text-lg text-gray-800 bg-white text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"> 
+              <p>  <span class="text-blue-700">Arrow Function:</span>(1)The arrow (this keyword)
+                   function doesn't define its own execution context.
+                   (2)If you try to invoke an arrow function prefixed with new keyword, JavaScrip throws an error,
+                   (3)no arguments special keyword is defined inside an arrow function.
+                  </p>
+                  <p class="mt-4">
+                    <span class="text-blue-700">Regular Function:</span>
+                  (1)this value is dynamic.(2)the regular function can easily construct objects.
+                  (3)Inside the body of a regular function, arguments is a special array-like object containing the list of arguments with which the function has been invoked.
+                  </p>
+              
+            </div>
+          </div>
+         </div>  
+
+         <div class="m-3 text-start">
+          <div class="collapse">
+            <input type="checkbox" class="peer" /> 
+            <div class="collapse-title text-xl rounded-md text-gray-500 bg-white text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+              Q3. Difference among map, forEach , filter , find method?
+            </div>
+            <div class="text-left collapse-content font-bold text-lg text-gray-800 bg-white text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"> 
+                  <p >
+                    <span class="text-blue-700">forEach:</span>  Foreach takes a callback function and run that callback function on each element of array one by one.
+                       </p>
+                       <p class="mt-4">
+                        <span class="text-blue-700">filter:</span> filter method  loop over the array and executes the callback function and check its return value. 
+                      </p>
+                      <p class="mt-4">
+                        <span class="text-blue-700">find:</span> The find() method returns the value of the first element that passes a test. The find() method executes a function for each array element. The find() method returns undefined if no elements are found. The find() method does not execute the function for empty elements.
+                      </p>
+                      <p class="mt-4"> <span class="text-blue-700">map:</span>  Map like filter & foreach takes a callback and run it against every element on the array but whats makes it unique is it generate a new array based on your existing array.   </p>
+
+              
+            </div>
+          </div>
+         </div>  
+
+
+         <div class="m-3 text-start">
+          <div class="collapse">
+            <input type="checkbox" class="peer" /> 
+            <div class="collapse-title text-xl rounded-md text-gray-500 bg-white text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+              Q4. Why do you use template literal string ? 
+            </div>
+            <div class="text-left collapse-content font-bold text-lg text-gray-800 bg-white text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"> 
+                  <p >
+                  Template literals provide an easy way to interpolate variables and expressions into strings. The method is called string interpolation.
+                       </p>
+           
+              
+            </div>
+          </div>
+         </div>  
+
+
+
+
+
+
+
 
        </div>
 
